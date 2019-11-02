@@ -6,11 +6,28 @@
   </ion-header>
 
   <ion-content>
-    <ion-list>
-      <button menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)">
-        {{p.title}}
-      </button>
-    </ion-list>
+      <div class="row imagen-menu-usuario">
+          <img class="centrar" src="assets/imgs/user.png">
+      </div>
+  
+      <div class="row">
+        <div class="centrar">
+          <h3>Nombre del usuario</h3>
+        </div>
+      </div>
+  
+      <ion-list>
+        <button menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)">
+          <img src= {{p.image}}>{{p.title}}
+        </button>
+  
+        <button menuClose ion-item
+                (click)="Salir()">
+          <img src= "assets/imgs/salir.png">Salir
+        </button>
+  
+      </ion-list>
+
   </ion-content>
 
 </ion-menu>

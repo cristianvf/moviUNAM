@@ -1,5 +1,7 @@
 {
   "name": "movUNAM",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "ionic-angular"
 }

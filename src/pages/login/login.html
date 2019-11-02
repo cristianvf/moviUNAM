@@ -1,0 +1,42 @@
+<ion-header>
+    <ion-navbar>
+      <ion-title  id="header-login">
+          Movilidad UNAM
+      </ion-title>
+    </ion-navbar>
+  </ion-header>
+  
+  <ion-content padding>
+    <img src="assets/imgs/UNAM2.jpg">
+  
+  
+      <ion-item>
+        <ion-label floating>Usuario</ion-label>
+        <ion-input type="text" [(ngModel)]="usuario"></ion-input>
+      </ion-item>
+  
+      <ion-item>
+        <ion-label floating>Contraseña</ion-label>
+        <ion-input type="password" [(ngModel)]="pass"></ion-input>
+      </ion-item>
+  
+  <div class="row">
+    <button ion-button
+          color="verde"
+          class="botonLogin"
+          (click)="continuar()">
+          Iniciar Sesión
+    </button>
+    <button ion-button
+          color="primary"
+          class="botonLogin"
+          (click)="registrar()">
+          Registrarse
+    </button>
+  </div>
+  
+  <div class="row" id="recuperarPassword" onclick="recuperarPassword()">
+    <a >¿Olvidaste tu contraseña?</a>
+  </div>
+  </ion-content>
+  

@@ -1,18 +1,71 @@
 <ion-header>
-  <ion-navbar>
-    <button ion-button menuToggle>
-      <ion-icon name="menu"></ion-icon>
-    </button>
-    <ion-title>Home</ion-title>
-  </ion-navbar>
-</ion-header>
+    <ion-navbar>
+      <button ion-button menuToggle>
+        <ion-icon name="menu"></ion-icon>
+      </button>
+  
+      <ion-row *ngIf = "opcion != 2 && opcion != 5">
+        <ion-title>{{ titulo }}</ion-title>
+      </ion-row>
+  
+      <ion-row *ngIf = "opcion == 2">
+          <ion-item>
+            <ion-label>Rutas</ion-label>
+            <ion-select placeholder="Seleccionar" (ionChange)="cambioRuta($event)">
+              <ion-option *ngFor="let ruta of rutas"  value={{ruta.rutaId}}>{{ruta.rutaNombre}}</ion-option>
+            </ion-select>
+          </ion-item>
+      </ion-row>
 
-<ion-content padding>
-  <h3>Ionic Menu Starter</h3>
+      <ion-row *ngIf = "opcion == 5">
+        <ion-item>
+          <ion-label>Estacionamientos</ion-label>
+          <ion-select placeholder="Seleccionar" (ionChange)="cambioEstacionamiento($event)">
+            <ion-option *ngFor="let estacionamiento of estacionamientos"  
+            value={{estacionamiento.estacionamientoId}}>{{estacionamiento.estacionamientoNombre}}</ion-option>
+          </ion-select>
+        </ion-item>
+    </ion-row>
+  
+    </ion-navbar>
+  </ion-header>
+  
+  <ion-content> 
+    
+    <agm-map [latitude]="lat" [longitude]="lng" [zoom]="15">
+      <ng-container>
 
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will show you the way.
-  </p>
+          <agm-marker [latitude]="lat" [longitude]="lng">
+          </agm-marker>
 
-  <button ion-button secondary menuToggle>Toggle Menu</button>
-</ion-content>
+          <agm-polyline *ngIf = "opcion != 5" [strokeColor]="color" [strokeWeight]="6">
+            <agm-polyline-point *ngFor="let geo of geometria" [latitude]="geo.lat" [longitude]="geo.lng">
+            </agm-polyline-point>
+          </agm-polyline>
+  
+          <agm-marker  *ngFor="let estacion of estaciones"  [latitude]="estacion.lat" [longitude]="estacion.lng" [iconUrl]="icono">
+            <agm-info-window>
+              <strong>{{estacion.nombre}}</strong><br>
+            </agm-info-window>
+          </agm-marker>
+
+          <agm-marker *ngFor="let camion of camiones"  [latitude]="camion.lat" [longitude]="camion.lng" [iconUrl]="iconoCamion">
+              <agm-info-window>
+                  <strong>Tiempo aproximado de llegada: {{camion.tiempo}}</strong><br>
+                </agm-info-window>
+          </agm-marker>
+
+
+          <agm-polygon *ngIf = "opcion == 5" [paths]="geometria">
+          </agm-polygon>
+         
+          <agm-marker *ngIf = "opcion == 5"  [latitude]="lugares.lat" [longitude]="lugares.lng">
+            <agm-info-window>
+              <strong>Lugares disponibles: {{lugares.lugares}}</strong><br>
+            </agm-info-window>
+          </agm-marker>
+          
+      </ng-container>
+    </agm-map>
+    
+  </ion-content>

@@ -1,0 +1,23 @@
+page-login {
+    img{
+      margin-left: 25%;
+      width: 50%;
+      height: 50%;
+    }
+    .botonLogin{
+      margin: auto;
+      display: block;
+      margin-top: 15px;
+    }
+  
+    #recuperarPassword{
+      margin-top: 15px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    #header-login{
+      text-align: center;
+    }
+  }

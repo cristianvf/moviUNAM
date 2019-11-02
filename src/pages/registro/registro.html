@@ -1,0 +1,50 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Registro de cuenta</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <div class="row">
+    <p>Por favor ingrese la siguiente información para crear su cuenta.</p>
+  </div>
+  <ion-item>
+    <ion-label floating>Nombre(s)</ion-label>
+    <ion-input type="text" [(ngModel)]="usuNombre"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label floating>Primer apellido</ion-label>
+    <ion-input type="text" [(ngModel)]="usuPrimerApellido"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label floating>Segundo apellido</ion-label>
+    <ion-input type="text" [(ngModel)]="usuSegundoApellido"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label floating>Correo electronico</ion-label>
+    <ion-input type="email" [(ngModel)]="usuCorreo"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label floating>Contraseña</ion-label>
+    <ion-input type="password" [(ngModel)]="password"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label floating>Confirmar contraseña</ion-label>
+    <ion-input type="password" [(ngModel)]="confirmarPassword"></ion-input>
+  </ion-item>
+
+  <div class="row">
+    <button ion-button
+          color="verde"
+          class="botonRegistro"
+          (click)="aceptarRegistro()">
+          Aceptar
+    </button>
+    <button ion-button
+          color="danger"
+          class="botonRegistro"
+          (click)="cancelarRegistro()">
+          Cancelar
+    </button>
+  </div>
+</ion-content>
